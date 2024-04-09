@@ -1,0 +1,166 @@
+################################# Default configuration ###################
+baseURL = "https://devolution.llc"
+title = "Devolution LLC"
+theme = "meghna-hugo"
+defaultContentLanguage = "en"
+# Default time zone for time stamps; use any valid tz database name: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+timeZone = "Europe/Berlin"
+# post pagination
+paginate = 6 # see https://gohugo.io/extras/pagination/
+# post excerpt
+summaryLength = 15 # see https://gohugo.io/content-management/excerpts/
+# google analytics
+googleAnalytics = "UA-123456-78" # example: UA-123456-78, for more info, read the article https://support.google.com/analytics/answer/1008080?hl=en
+# disqus short name
+disqusShortname = "themefisher-template" # we use disqus to show comments in blog posts . To install disqus please follow this tutorial https://portfolio.peter-baumgartner.net/2017/09/10/how-to-install-disqus-on-hugo/
+hasCJKLanguage = false #  If hasCJKLanguage true, auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
+
+############################# Build ##############################
+[build]
+noJSConfigInAssets = false
+useResourceCacheWhen = 'fallback'
+[build.buildStats]
+enable = true
+[[build.cachebusters]]
+source = 'assets/.*\.(js|ts|jsx|tsx)'
+target = '(js|scripts|javascript)'
+[[build.cachebusters]]
+source = 'assets/.*\.(css|sass|scss)$'
+target = '(css|styles|scss|sass)'
+[[build.cachebusters]]
+source = 'assets/.*\.(.*)$'
+target = '$1'
+
+############################# Outputs ##############################
+[outputs]
+home = ["HTML", "RSS"]
+
+############################# Imaging ##############################
+[imaging]
+# See https://github.com/disintegration/imaging
+# Default JPEG or WebP quality setting. Default is 75.
+quality = 90
+resampleFilter = "Lanczos"
+
+############################# Caches ###############################
+[caches]
+[caches.images]
+dir = ":resourceDir/_gen"
+maxAge = "720h"
+
+[caches.assets]
+dir = ":resourceDir/_gen"
+maxAge = "720h"
+
+############################# Markup ###############################
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+
+############################# Plugins ##########################
+# css plugins
+[[params.plugins.css]]
+link = "plugins/bootstrap/bootstrap.min.css"
+[[params.plugins.css]]
+link = "plugins/themify-icons/themify-icons.css"
+[[params.plugins.css]]
+link = "plugins/magnific-popup/magnific-popup.css"
+[[params.plugins.css]]
+link = "plugins/slick/slick.css"
+[[params.plugins.css]]
+link = "https://fonts.googleapis.com/css?family=Anaheim|Quattrocento+Sans:400,700&display=swap"
+
+# js plugins
+[[params.plugins.js]]
+link = "plugins/jquery/jquery.min.js"
+[[params.plugins.js]]
+link = "plugins/bootstrap/bootstrap.min.js"
+[[params.plugins.js]]
+link = "plugins/slick/slick.min.js"
+[[params.plugins.js]]
+link = "plugins/shuffle/shuffle.min.js"
+[[params.plugins.js]]
+link = "plugins/magnific-popup/jquery.magnific-popup.min.js"
+[[params.plugins.js]]
+link = "plugins/lazy-load/lozad.min.js"
+[[params.plugins.js]]
+link = "plugins/google-map/map.js"
+
+################### Navigation ########################
+# [[menu.main]]
+# name = "about"
+# url = "#about"
+# weight = 1
+
+# [[menu.main]]
+# name = "services"
+# # url = "#services"
+# weight = 2
+# 
+# [[menu.main]]
+# name = "portfolio"
+# url = "#portfolio"
+# weight = 3
+# 
+# [[menu.main]]
+# name = "team"
+# url = "#team"
+# weight = 4
+# 
+# [[menu.main]]
+# name = "pricing"
+# url = "#pricing"
+# weight = 5
+# 
+# [[menu.main]]
+# name = "blog"
+# url = "#blog"
+# weight = 6
+# 
+# [[menu.main]]
+# name = "contact"
+# url = "#contact"
+# weight = 7
+# 
+
+############################# Default Parameters ##########################
+[params]
+logo = "images/logo.png"
+# Metadata
+description = "Professional DevOps services"
+author = "Alis Adrović"
+# Google Analytics
+google_analytics_id = "" # Your ID
+# post share
+post_share = true
+
+# weight = 1
+home = "Home"
+copyright = "Copyright &copy; 2024 Devolution LLC"
+
+# preloader
+[params.preloader]
+enable = false
+preloader = "images/logo.png"
+
+# cookies
+[params.cookies]
+enable = false
+expire_days = 2
+
+# Google maps
+[params.map]
+enable = false
+gmap_api = ""
+map_latitude = ""
+map_longitude = ""
+map_marker = ""
+
+############################# Social icons ##########################
+[[params.social]]
+icon = "ti-twitter-alt" # themify icon pack : https://themify.me/themify-icons
+link = "#"
+
+[[params.social]]
+icon = "ti-linkedin" # themify icon pack : https://themify.me/themify-icons
+link = "#"
