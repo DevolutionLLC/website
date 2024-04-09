@@ -3,6 +3,7 @@ baseURL = "https://devolution.llc"
 title = "Devolution LLC"
 theme = "meghna-hugo"
 defaultContentLanguage = "en"
+languageCode = 'en-us'
 # Default time zone for time stamps; use any valid tz database name: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 timeZone = "Europe/Berlin"
 # post pagination
