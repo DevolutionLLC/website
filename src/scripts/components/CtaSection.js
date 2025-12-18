@@ -10,23 +10,43 @@ export default {
       },
       submitted: false,
       submitting: false,
+      error: null,
     }
   },
   methods: {
-    handleSubmit(e) {
+    async handleSubmit(e) {
       e.preventDefault()
       this.submitting = true
+      this.error = null
 
-      // Simulate form submission
-      setTimeout(() => {
-        console.log("Form submitted:", this.form)
+      try {
+        const response = await fetch("https://o8g09g2h69.execute-api.eu-central-1.amazonaws.com/hello", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: this.form.name,
+            email: this.form.email,
+            message: this.form.message || "",
+          }),
+        })
+
+        if (!response.ok) {
+          throw new Error("Failed to send message")
+        }
+
         this.submitted = true
-        this.submitting = false
         this.form = { name: "", email: "", message: "" }
-      }, 800)
+      } catch (err) {
+        this.error = "Something went wrong. Please try again or email us directly."
+      } finally {
+        this.submitting = false
+      }
     },
     resetForm() {
       this.submitted = false
+      this.error = null
     },
   },
   template: `
@@ -57,6 +77,12 @@ export default {
           
           <!-- Contact Form -->
           <form v-else class="contact-form" @submit="handleSubmit">
+            <!-- Error message display -->
+            <div v-if="error" class="form-error">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              {{ error }}
+            </div>
+            
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="name">Your Name</label>
