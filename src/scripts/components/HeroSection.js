@@ -4,13 +4,7 @@ export default {
   data() {
     return {
       currentIndex: 0,
-      phrases: [
-        "Automated Growth",
-        "Scalable Systems",
-        "Effortless Workflows",
-        "Reliable Operations",
-        "Smarter Processes",
-      ],
+      phrases: ["Automated Growth", "Scalable Systems", "Smarter Processes"],
       isAnimating: false,
     }
   },
@@ -44,8 +38,10 @@ export default {
           <!-- Left: Content -->
           <div class="hero-content">
             <h1 class="hero-title">
-              <span class="hero-title-line">We Turn Manual Chaos</span>
-              <span class="hero-title-line">Into <span class="hero-title-accent rotating-text" :class="{ 'fade-out': isAnimating }">{{ currentPhrase }}</span></span>
+              <span class="hero-title-static">We Turn Manual Chaos Into</span>
+              <span class="hero-rotating-wrapper">
+                <span class="hero-title-accent rotating-text" :class="{ 'fade-out': isAnimating }">{{ currentPhrase }}</span>
+              </span>
             </h1>
             
             <p class="hero-description">
