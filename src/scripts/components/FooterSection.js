@@ -27,7 +27,10 @@ export default {
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <a href="#" class="footer-logo">Devolution<span>.</span></a>
+          <!-- Replaced text logo with SVG image -->
+          <a href="#" class="footer-logo">
+            <img src="public/devolution-logo-logo-full-dark-bg.svg" alt="Devolution" class="footer-logo-img">
+          </a>
           
           <p class="footer-copy">&copy; {{ currentYear }} Devolution LLC. All rights reserved.</p>
           

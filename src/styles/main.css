@@ -102,6 +102,75 @@ a {
   color: var(--copper-500);
 }
 
+/* Nav logo spacing and image sizing */
+.nav-logo {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  /* ensure there's always subtle left spacing so the logo isn't flush to the viewport */
+  padding-left: 0.75rem;
+}
+
+/* Constrain the SVG visually so it keeps proportions with the layout */
+.nav-logo-img {
+  height: auto;
+  max-height: 42px;
+  max-width: 260px;
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .nav-logo {
+    padding-left: 1rem;
+  }
+  .nav-logo-img {
+    max-height: 48px;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo {
+    padding-left: 0.75rem;
+  }
+  .nav-logo-img {
+    max-height: 34px;
+    max-width: 180px;
+  }
+}
+
+@media (min-width: 900px) {
+  /* on wide screens the nav layout can align to the container; slightly reduce left padding */
+  .nav-logo {
+    padding-left: 0.5rem;
+  }
+}
+
+/* Defensive fixes: ensure navbar logo cannot be hidden by other rules */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  overflow: visible;
+}
+
+.nav-logo-img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: 48px !important;
+  max-width: 320px !important;
+  width: auto !important;
+}
+
+@media (max-width: 480px) {
+  .nav-logo-img {
+    max-height: 34px !important;
+    max-width: 200px !important;
+  }
+}
+
 /* Desktop Navigation - hidden on mobile */
 .nav-desktop {
   display: none;
@@ -1132,6 +1201,30 @@ a {
 
 .footer-logo span {
   color: var(--copper-500);
+}
+
+/* Footer logo image sizing and spacing */
+.footer-logo-img {
+  height: 34px;
+  max-width: 100%;
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .footer-logo-img {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* add subtle left padding on very small screens so the logo isn't flush to the edge */
+  .footer-logo {
+    padding-left: 0.75rem;
+  }
+  .footer-logo-img {
+    height: 28px;
+  }
 }
 
 .footer-copy {

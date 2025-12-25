@@ -17,9 +17,18 @@ export default {
   template: `
     <nav class="nav">
       <div class="container nav-inner">
-        <a href="#" class="nav-logo">Devolution<span>.</span></a>
+        <!-- Replaced text logo with SVG image -->
+        <a href="/" class="nav-logo" aria-label="Devolution home">
+          <img
+            src="public/devolution-logo-logo-full-dark-bg.svg"
+            alt="Devolution"
+            class="nav-logo-img"
+            style="height:36px; width:auto; display:block;"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
         
-        <!-- Desktop Navigation -->
         <div class="nav-links nav-desktop">
           <a href="#services" class="nav-link">Services</a>
           <a href="#process" class="nav-link">Process</a>
@@ -27,13 +36,11 @@ export default {
           <a href="#contact" class="nav-cta">Let's Talk</a>
         </div>
         
-        <!-- Mobile Menu Button -->
         <button class="nav-mobile-toggle" @click="toggleMenu" :aria-expanded="mobileMenuOpen" aria-label="Toggle menu">
           <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
         </button>
       </div>
       
-      <!-- Mobile Navigation Dropdown -->
       <div class="nav-mobile" :class="{ 'nav-mobile-open': mobileMenuOpen }">
         <a href="#services" class="nav-mobile-link" @click="closeMenu">Services</a>
         <a href="#process" class="nav-mobile-link" @click="closeMenu">Process</a>
