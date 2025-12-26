@@ -23,7 +23,7 @@ export default {
             src="public/devolution-logo-logo-full-dark-bg.svg"
             alt="Devolution"
             class="nav-logo-img"
-            style="height:36px; width:auto; display:block;"
+            style="height:24px; width:auto; display:block; margin:0;"
             loading="eager"
             decoding="async"
           />

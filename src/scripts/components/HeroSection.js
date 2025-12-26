@@ -91,7 +91,7 @@ export default {
                 </div>
               </div>
               
-              <svg class="network-lines" viewBox="0 0 400 400">
+              <svg class="network-lines" viewBox="0 0 400 400" width="400" height="400" aria-hidden="true">
                 <line class="connection-line line-1" x1="200" y1="200" x2="200" y2="60" />
                 <line class="connection-line line-2" x1="200" y1="200" x2="320" y2="130" />
                 <line class="connection-line line-3" x1="200" y1="200" x2="320" y2="270" />

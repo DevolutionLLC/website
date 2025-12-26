@@ -112,13 +112,21 @@ a {
   padding-left: 0.75rem;
 }
 
-/* Constrain the SVG visually so it keeps proportions with the layout */
+/* Navbar logo sizing - aggressively constrained for visual balance and performance */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  overflow: visible;
+}
+
 .nav-logo-img {
-  height: auto;
-  max-height: 42px;
-  max-width: 260px;
-  width: auto;
-  display: block;
+  height: 24px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 0 !important;
 }
 
 @media (min-width: 768px) {
@@ -126,8 +134,8 @@ a {
     padding-left: 1rem;
   }
   .nav-logo-img {
-    max-height: 48px;
-    max-width: 320px;
+    height: 28px !important;
+    max-width: 220px !important;
   }
 }
 
@@ -136,38 +144,14 @@ a {
     padding-left: 0.75rem;
   }
   .nav-logo-img {
-    max-height: 34px;
-    max-width: 180px;
+    height: 20px !important;
+    max-width: 140px !important;
   }
 }
 
 @media (min-width: 900px) {
-  /* on wide screens the nav layout can align to the container; slightly reduce left padding */
   .nav-logo {
     padding-left: 0.5rem;
-  }
-}
-
-/* Defensive fixes: ensure navbar logo cannot be hidden by other rules */
-.nav-logo {
-  display: flex;
-  align-items: center;
-  overflow: visible;
-}
-
-.nav-logo-img {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  max-height: 48px !important;
-  max-width: 320px !important;
-  width: auto !important;
-}
-
-@media (max-width: 480px) {
-  .nav-logo-img {
-    max-height: 34px !important;
-    max-width: 200px !important;
   }
 }
 
@@ -1203,27 +1187,37 @@ a {
   color: var(--copper-500);
 }
 
-/* Footer logo image sizing and spacing */
+/* Footer logo image sizing and spacing - reduced to match navbar proportions */
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
 .footer-logo-img {
-  height: 34px;
-  max-width: 100%;
-  width: auto;
-  display: block;
+  height: 24px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  display: block !important;
+  margin: 0 !important;
 }
 
 @media (min-width: 768px) {
+  .footer-logo {
+    padding-left: 0.5rem;
+  }
   .footer-logo-img {
-    height: 40px;
+    height: 28px !important;
+    max-width: 220px !important;
   }
 }
 
 @media (max-width: 480px) {
-  /* add subtle left padding on very small screens so the logo isn't flush to the edge */
   .footer-logo {
     padding-left: 0.75rem;
   }
   .footer-logo-img {
-    height: 28px;
+    height: 20px !important;
+    max-width: 140px !important;
   }
 }
 
