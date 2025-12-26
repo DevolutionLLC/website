@@ -2,12 +2,13 @@
 
 /**
  * Build script for Devolution LLC website
- * Minifies CSS and prepares production assets
+ * Uses industry-standard tools: terser for JS, csso for CSS
  */
 
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
+import { minify } from 'terser';
 
 const SRC_DIR = './src';
 const DIST_DIR = './dist';
@@ -25,30 +26,36 @@ console.log('📋 Copying source files...');
 execSync(`cp -r ${SRC_DIR}/* ${DIST_DIR}/`, { stdio: 'inherit' });
 
 // Minify CSS with csso
-console.log('📦 Minifying CSS with csso...');
+console.log('📦 Minifying CSS...');
 const cssInputPath = path.join(DIST_DIR, 'styles', 'main.css');
 const cssOutputPath = path.join(DIST_DIR, 'styles', 'main.min.css');
 
 if (fs.existsSync(cssInputPath)) {
   try {
-    // Try using csso-cli for better minification
     execSync(`npx csso ${cssInputPath} -o ${cssOutputPath}`, { stdio: 'pipe' });
-    console.log(`✅ CSS minified with csso: ${cssOutputPath}`);
+    console.log(`✅ CSS minified: ${cssOutputPath}`);
   } catch (err) {
     console.warn('⚠️  csso not available, using fallback minifier...');
     minifyCSS(cssInputPath, cssOutputPath);
-    console.log(`✅ CSS minified (basic): ${cssOutputPath}`);
+    console.log(`✅ CSS minified (fallback): ${cssOutputPath}`);
   }
 } else {
   console.warn(`⚠️  CSS file not found: ${cssInputPath}`);
 }
 
+// Minify JavaScript files with Terser
+console.log('📦 Minifying JavaScript with Terser...');
+const jsDir = path.join(DIST_DIR, 'scripts');
+await minifyJSDirectory(jsDir);
+
 // Update HTML to use minified CSS in dist
-console.log('📝 Updating HTML to reference minified CSS...');
+console.log('📝 Updating HTML to reference minified assets...');
 const htmlPath = path.join(DIST_DIR, 'index.html');
 if (fs.existsSync(htmlPath)) {
   let html = fs.readFileSync(htmlPath, 'utf-8');
   html = html.replace(/href="styles\/main\.css"/g, 'href="styles/main.min.css"');
+  // Update main.js to main.min.js
+  html = html.replace(/src="scripts\/main\.js"/g, 'src="scripts/main.min.js"');
   fs.writeFileSync(htmlPath, html);
   console.log('✅ HTML updated');
 }
@@ -76,4 +83,49 @@ function minifyCSS(inputPath, outputPath) {
   css = css.trim();
   
   fs.writeFileSync(outputPath, css);
+}
+
+/**
+ * Minify all JavaScript files in a directory recursively using Terser
+ */
+async function minifyJSDirectory(dir) {
+  const files = fs.readdirSync(dir, { withFileTypes: true });
+  
+  for (const file of files) {
+    const fullPath = path.join(dir, file.name);
+    
+    if (file.isDirectory()) {
+      await minifyJSDirectory(fullPath);
+    } else if (file.name.endsWith('.js') && !file.name.endsWith('.min.js')) {
+      try {
+        let jsContent = fs.readFileSync(fullPath, 'utf-8');
+        
+        // Rewrite imports to use minified versions BEFORE minification
+        jsContent = jsContent.replace(/from\s+["'](.+?)\.js["']/g, 'from "$1.min.js"');
+        
+        // Minify with Terser using production settings
+        const result = await minify(jsContent, {
+          compress: {
+            drop_console: false,
+            passes: 2
+          },
+          mangle: true,
+          output: {
+            comments: false
+          }
+        });
+        
+        if (result.error) {
+          console.warn(`  ⚠️  Terser error in ${file.name}: ${result.error.message}`);
+          return;
+        }
+        
+        const minPath = fullPath.replace(/\.js$/, '.min.js');
+        fs.writeFileSync(minPath, result.code);
+        console.log(`  ✅ ${file.name} → ${path.basename(minPath)}`);
+      } catch (err) {
+        console.warn(`  ⚠️  Failed to minify ${file.name}: ${err.message}`);
+      }
+    }
+  }
 }

@@ -12,7 +12,9 @@
     "vue": "^3.5.26"
   },
   "devDependencies": {
-    "csso-cli": "^4.0.2"
+    "csso-cli": "^4.0.2",
+    "esbuild": "^0.27.2",
+    "terser": "^5.44.1"
   },
   "engines": {
     "node": ">=16.0.0"
