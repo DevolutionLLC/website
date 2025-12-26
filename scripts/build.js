@@ -13,9 +13,10 @@ const SRC_DIR = './src';
 const DIST_DIR = './dist';
 
 // Create dist directory if it doesn't exist
-if (!fs.existsSync(DIST_DIR)) {
-  fs.mkdirSync(DIST_DIR, { recursive: true });
+if (fs.existsSync(DIST_DIR)) {
+  execSync(`rm -rf ${DIST_DIR}`);
 }
+fs.mkdirSync(DIST_DIR, { recursive: true });
 
 console.log('🔨 Building Devolution LLC website...');
 
@@ -23,25 +24,20 @@ console.log('🔨 Building Devolution LLC website...');
 console.log('📋 Copying source files...');
 execSync(`cp -r ${SRC_DIR}/* ${DIST_DIR}/`, { stdio: 'inherit' });
 
-// Minify CSS
-console.log('📦 Minifying CSS...');
+// Minify CSS with csso
+console.log('📦 Minifying CSS with csso...');
 const cssInputPath = path.join(DIST_DIR, 'styles', 'main.css');
 const cssOutputPath = path.join(DIST_DIR, 'styles', 'main.min.css');
 
 if (fs.existsSync(cssInputPath)) {
   try {
-    // Use csso-cli for CSS minification if available, otherwise use simple script
-    try {
-      execSync(`npx csso ${cssInputPath} -o ${cssOutputPath}`, { stdio: 'inherit' });
-      console.log(`✅ CSS minified: ${cssOutputPath}`);
-    } catch (e) {
-      // Fallback: simple minification if csso not available
-      minifyCSS(cssInputPath, cssOutputPath);
-      console.log(`✅ CSS minified (basic): ${cssOutputPath}`);
-    }
+    // Try using csso-cli for better minification
+    execSync(`npx csso ${cssInputPath} -o ${cssOutputPath}`, { stdio: 'pipe' });
+    console.log(`✅ CSS minified with csso: ${cssOutputPath}`);
   } catch (err) {
-    console.error('❌ CSS minification failed:', err.message);
-    process.exit(1);
+    console.warn('⚠️  csso not available, using fallback minifier...');
+    minifyCSS(cssInputPath, cssOutputPath);
+    console.log(`✅ CSS minified (basic): ${cssOutputPath}`);
   }
 } else {
   console.warn(`⚠️  CSS file not found: ${cssInputPath}`);
@@ -75,6 +71,9 @@ function minifyCSS(inputPath, outputPath) {
   
   // Remove trailing semicolons before closing brace
   css = css.replace(/;}/g, '}');
+  
+  // Remove leading/trailing whitespace
+  css = css.trim();
   
   fs.writeFileSync(outputPath, css);
 }
