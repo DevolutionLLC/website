@@ -2,7 +2,7 @@
 
 /**
  * Build script for Devolution LLC website
- * Uses industry-standard tools: terser for JS, csso for CSS, esbuild for bundling
+ * Uses industry-standard tools: terser for JS, csso for CSS
  */
 
 import fs from 'fs';
