@@ -10,13 +10,22 @@ function initializeApp() {
   const Vue = window.Vue
   if (!Vue) {
     // Vue not loaded yet, retry after short delay
-    requestIdleCallback(() => initializeApp(), { timeout: 100 })
+    requestIdleCallback(() => initializeApp(), { timeout: 50 })
     return
   }
 
   const { createApp } = Vue
   const app = createApp(App)
   app.mount("#app")
+}
+
+// Use requestIdleCallback for truly deferred initialization
+// Falls back to setTimeout for browsers without support
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(initializeApp, { timeout: 3000 })
+} else {
+  // Delay initialization until after all critical rendering is done (1 sec)
+  setTimeout(initializeApp, 1000)
 }
 
 // Use requestIdleCallback if available, otherwise use setTimeout

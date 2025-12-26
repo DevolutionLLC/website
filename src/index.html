@@ -27,34 +27,38 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
 
-  <!-- Preload logo SVG with importance hint for faster LCP -->
-  <link rel="preload" href="public/devolution-logo-logo-full-dark-bg.svg" as="image" type="image/svg+xml" importance="high">
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://unpkg.com">
 
-  <!-- Fonts: async load to prevent render blocking, use system font initially -->
+  <!-- Preconnect to critical origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Use font-display=optional for true non-blocking load -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Preload critical SVG logo -->
+  <link rel="preload" href="public/devolution-logo-logo-full-dark-bg.svg" as="image" type="image/svg+xml" imagesrcset="public/devolution-logo-logo-full-dark-bg.svg">
+
+  <!-- Fonts: Load Inter font with display=swap for better perceived performance -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- FontAwesome - loaded async to not block rendering -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  <!-- Vue.js - defer loading to after main content -->
-  <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-
-  <!-- Styles (minified during build) -->
-  <link rel="stylesheet" href="styles/main.css">
+  <!-- Main Stylesheet (minified during build) -->
+  <link rel="stylesheet" href="styles/main.min.css">
 
   <!-- Minimal critical CSS for above-the-fold content to improve FCP -->
   <style>
-    html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#cbd5e1}.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,21,38,.95)}.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 4rem}@font-face{font-family:Inter;font-display:optional;src:url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHAPMtMV7hPAuhJQo0.woff2) format("woff2")}
+    html{scroll-behavior:smooth;background:#0a0f1a}body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#cbd5e1;line-height:1.6}.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,21,38,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,98,.15);padding:1.25rem 1rem}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 1.5rem 4rem}
   </style>
+
+  <!-- Vue.js - defer loading to after paint with module strategy -->
+  <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
   <!-- Google tag (gtag.js) - async and deferred -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HYT3HPZPEJ"></script>

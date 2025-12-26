@@ -2,13 +2,14 @@
 
 /**
  * Build script for Devolution LLC website
- * Uses industry-standard tools: terser for JS, csso for CSS
+ * Uses industry-standard tools: terser for JS, csso for CSS, esbuild for bundling
  */
 
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { minify } from 'terser';
+import * as esbuild from 'esbuild';
 
 const SRC_DIR = './src';
 const DIST_DIR = './dist';
@@ -43,10 +44,33 @@ if (fs.existsSync(cssInputPath)) {
   console.warn(`⚠️  CSS file not found: ${cssInputPath}`);
 }
 
-// Minify JavaScript files with Terser
-console.log('📦 Minifying JavaScript with Terser...');
-const jsDir = path.join(DIST_DIR, 'scripts');
-await minifyJSDirectory(jsDir);
+// Bundle and minify JavaScript with esbuild for production
+console.log('📦 Bundling and minifying JavaScript...');
+const jsEntryPath = path.join(DIST_DIR, 'scripts', 'main.js');
+const jsOutputPath = path.join(DIST_DIR, 'scripts', 'main.min.js');
+
+if (fs.existsSync(jsEntryPath)) {
+  try {
+    // Use esbuild for production bundling - much more efficient than terser alone
+    await esbuild.build({
+      entryPoints: [jsEntryPath],
+      bundle: true,
+      minify: true,
+      sourcemap: false,
+      target: 'es2020',
+      outfile: jsOutputPath,
+      external: ['vue'], // Vue is loaded from CDN, don't bundle it
+      logLevel: 'silent'
+    });
+    console.log(`  ✅ Bundled and minified: scripts/main.min.js`);
+  } catch (err) {
+    console.warn(`  ⚠️  esbuild failed, trying terser fallback...`);
+    // Fallback to minifying individual files
+    await minifyJSDirectory(path.join(DIST_DIR, 'scripts'));
+  }
+} else {
+  console.warn(`⚠️  Main JS entry not found: ${jsEntryPath}`);
+}
 
 // Update HTML to use minified CSS in dist
 console.log('📝 Updating HTML to reference minified assets...');
@@ -59,6 +83,11 @@ if (fs.existsSync(htmlPath)) {
   fs.writeFileSync(htmlPath, html);
   console.log('✅ HTML updated');
 }
+
+// Create .nojekyll file for GitHub Pages to serve minified files
+console.log('📝 Creating .nojekyll for GitHub Pages...');
+fs.writeFileSync(path.join(DIST_DIR, '.nojekyll'), '');
+console.log('✅ .nojekyll created');
 
 console.log('\n✨ Build complete! Ready for deployment.');
 console.log(`📁 Production files are in: ${DIST_DIR}/`);
@@ -86,7 +115,7 @@ function minifyCSS(inputPath, outputPath) {
 }
 
 /**
- * Minify all JavaScript files in a directory recursively using Terser
+ * Minify all JavaScript files in a directory recursively using Terser (fallback)
  */
 async function minifyJSDirectory(dir) {
   const files = fs.readdirSync(dir, { withFileTypes: true });
