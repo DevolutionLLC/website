@@ -12,6 +12,17 @@ hugo.linux
 # Temporary lock file while building
 /.hugo_build.lock
 
+# Build and distribution artifacts
+/dist/
+/node_modules/
+*.min.css
+*.min.js
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
 .DS_Store
 Thumbs.db
 *.log

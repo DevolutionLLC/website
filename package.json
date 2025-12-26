@@ -1,0 +1,20 @@
+{
+  "name": "devolution-llc-website",
+  "version": "1.0.0",
+  "description": "Devolution LLC - Enterprise Automation Consulting Website",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/dev.js",
+    "start": "npm run build && node scripts/dev.js"
+  },
+  "dependencies": {
+    "vue": "^3.5.26"
+  },
+  "devDependencies": {
+    "csso-cli": "^4.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
