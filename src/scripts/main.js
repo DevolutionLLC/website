@@ -4,8 +4,8 @@
 
 import App from "./App.js"
 
-// Defer Vue initialization until after first paint to improve FCP
-// This ensures critical render path is not blocked by Vue setup
+// Defer Vue initialization until browser is truly idle
+// This prevents blocking the main thread during page load
 function initializeApp() {
   const Vue = window.Vue
   if (!Vue) {
@@ -19,13 +19,14 @@ function initializeApp() {
   app.mount("#app")
 }
 
-// Use requestIdleCallback for truly deferred initialization
-// Falls back to setTimeout for browsers without support
+// Delay app initialization to let browser handle critical rendering first
+// This significantly improves FCP and LCP metrics
 if ('requestIdleCallback' in window) {
-  requestIdleCallback(initializeApp, { timeout: 3000 })
+  // Modern browsers: wait for idle time (typically 2-5 seconds)
+  requestIdleCallback(initializeApp, { timeout: 2000 })
 } else {
-  // Delay initialization until after all critical rendering is done (1 sec)
-  setTimeout(initializeApp, 1000)
+  // Fallback: wait 2 seconds for old browsers
+  setTimeout(initializeApp, 2000)
 }
 
 // Use requestIdleCallback if available, otherwise use setTimeout

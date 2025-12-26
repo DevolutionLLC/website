@@ -9,7 +9,6 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { minify } from 'terser';
-import * as esbuild from 'esbuild';
 
 const SRC_DIR = './src';
 const DIST_DIR = './dist';
@@ -44,33 +43,10 @@ if (fs.existsSync(cssInputPath)) {
   console.warn(`⚠️  CSS file not found: ${cssInputPath}`);
 }
 
-// Bundle and minify JavaScript with esbuild for production
-console.log('📦 Bundling and minifying JavaScript...');
-const jsEntryPath = path.join(DIST_DIR, 'scripts', 'main.js');
-const jsOutputPath = path.join(DIST_DIR, 'scripts', 'main.min.js');
-
-if (fs.existsSync(jsEntryPath)) {
-  try {
-    // Use esbuild for production bundling - much more efficient than terser alone
-    await esbuild.build({
-      entryPoints: [jsEntryPath],
-      bundle: true,
-      minify: true,
-      sourcemap: false,
-      target: 'es2020',
-      outfile: jsOutputPath,
-      external: ['vue'], // Vue is loaded from CDN, don't bundle it
-      logLevel: 'silent'
-    });
-    console.log(`  ✅ Bundled and minified: scripts/main.min.js`);
-  } catch (err) {
-    console.warn(`  ⚠️  esbuild failed, trying terser fallback...`);
-    // Fallback to minifying individual files
-    await minifyJSDirectory(path.join(DIST_DIR, 'scripts'));
-  }
-} else {
-  console.warn(`⚠️  Main JS entry not found: ${jsEntryPath}`);
-}
+// Minify JavaScript files with Terser (not esbuild - avoid main thread blocking)
+console.log('📦 Minifying JavaScript with Terser...');
+const jsDir = path.join(DIST_DIR, 'scripts');
+await minifyJSDirectory(jsDir);
 
 // Update HTML to use minified CSS in dist
 console.log('📝 Updating HTML to reference minified assets...');
