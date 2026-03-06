@@ -30,6 +30,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -38,6 +39,7 @@ body {
   color: var(--slate-300);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* Typography */
@@ -71,6 +73,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 100;
   background: rgba(13, 21, 38, 0.95);
   backdrop-filter: blur(12px);
@@ -81,13 +84,16 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Added horizontal padding for mobile logo spacing */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
   padding: 1.25rem 1rem;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .nav-inner {
-    padding: 1.25rem 0;
+    padding: 1.25rem 1.5rem;
   }
 }
 
