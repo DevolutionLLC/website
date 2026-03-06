@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DIST_DIR = path.join(__dirname, '..', 'dist');
+const DIST_DIR = path.join(__dirname, '..', 'src');
 const PORT = process.env.PORT || 3000;
 
 // MIME types
@@ -83,6 +83,6 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log(`\n🚀 Development server running at http://localhost:${PORT}`);
   console.log(`📁 Serving files from: ${DIST_DIR}`);
-  console.log('\n💡 Tip: Run "npm run build" after making changes to minify CSS');
+  console.log('\n💡 Changes to src/ are reflected immediately. Run "npm run build" for production.');
   console.log('Press Ctrl+C to stop\n');
 });

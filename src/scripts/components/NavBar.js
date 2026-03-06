@@ -33,6 +33,7 @@ export default {
           <a href="#services" class="nav-link">Services</a>
           <a href="#process" class="nav-link">Process</a>
           <a href="#about" class="nav-link">About</a>
+          <a href="#clients" class="nav-link">Clients</a>
           <a href="#contact" class="nav-cta">Let's Talk</a>
         </div>
         
@@ -45,6 +46,7 @@ export default {
         <a href="#services" class="nav-mobile-link" @click="closeMenu">Services</a>
         <a href="#process" class="nav-mobile-link" @click="closeMenu">Process</a>
         <a href="#about" class="nav-mobile-link" @click="closeMenu">About</a>
+        <a href="#clients" class="nav-mobile-link" @click="closeMenu">Clients</a>
         <a href="#contact" class="nav-mobile-cta" @click="closeMenu">Let's Talk</a>
       </div>
     </nav>

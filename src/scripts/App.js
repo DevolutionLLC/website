@@ -7,6 +7,7 @@ import HeroSection from "./components/HeroSection.js"
 import ServicesSection from "./components/ServicesSection.js"
 import ProcessSection from "./components/ProcessSection.js"
 import AboutSection from "./components/AboutSection.js"
+import ClientsSection from "./components/ClientsSection.js"
 import CtaSection from "./components/CtaSection.js"
 import FooterSection from "./components/FooterSection.js"
 
@@ -18,6 +19,7 @@ export default {
     ServicesSection,
     ProcessSection,
     AboutSection,
+    ClientsSection,
     CtaSection,
     FooterSection,
   },
@@ -29,6 +31,7 @@ export default {
         <ServicesSection />
         <ProcessSection />
         <AboutSection />
+        <ClientsSection />
         <CtaSection />
       </main>
       <FooterSection />
