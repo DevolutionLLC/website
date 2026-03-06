@@ -59,6 +59,8 @@ export default {
             v-for="company in companies"
             :key="company.name"
             :href="company.url"
+            target="_blank"
+            rel="noopener noreferrer"
             class="company-card"
             :title="company.name + ' - ' + company.industry"
           >
