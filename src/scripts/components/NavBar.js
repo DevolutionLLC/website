@@ -17,10 +17,9 @@ export default {
   template: `
     <nav class="nav">
       <div class="container nav-inner">
-        <!-- Replaced text logo with SVG image -->
         <a href="/" class="nav-logo" aria-label="Devolution home">
           <img
-            src="public/devolution-logo-logo-full-dark-bg.svg"
+            src="public/devolution-logo-logo-full-white-bg.svg"
             alt="Devolution"
             class="nav-logo-img"
             style="height:24px; width:auto; display:block; margin:0;"
@@ -31,10 +30,9 @@ export default {
         
         <div class="nav-links nav-desktop">
           <a href="#services" class="nav-link">Services</a>
-          <a href="#process" class="nav-link">Process</a>
+          <a href="#process" class="nav-link">How We Help</a>
           <a href="#about" class="nav-link">About</a>
-          <a href="#clients" class="nav-link">Clients</a>
-          <a href="#contact" class="nav-cta">Let's Talk</a>
+          <a href="#contact" class="nav-cta">Contact</a>
         </div>
         
         <button class="nav-mobile-toggle" @click="toggleMenu" :aria-expanded="mobileMenuOpen" aria-label="Toggle menu">
@@ -44,10 +42,9 @@ export default {
       
       <div class="nav-mobile" :class="{ 'nav-mobile-open': mobileMenuOpen }">
         <a href="#services" class="nav-mobile-link" @click="closeMenu">Services</a>
-        <a href="#process" class="nav-mobile-link" @click="closeMenu">Process</a>
+        <a href="#process" class="nav-mobile-link" @click="closeMenu">How We Help</a>
         <a href="#about" class="nav-mobile-link" @click="closeMenu">About</a>
-        <a href="#clients" class="nav-mobile-link" @click="closeMenu">Clients</a>
-        <a href="#contact" class="nav-mobile-cta" @click="closeMenu">Let's Talk</a>
+        <a href="#contact" class="nav-mobile-cta" @click="closeMenu">Contact</a>
       </div>
     </nav>
   `,

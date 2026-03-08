@@ -1,32 +1,25 @@
-// Process Section Component
 export default {
   name: "ProcessSection",
   data() {
     return {
-      steps: [
+      situations: [
         {
-          icon: "fa-solid fa-magnifying-glass",
-          number: 1,
-          title: "Discovery",
-          description: "We dig into how your business actually runs—not how you think it should.",
+          icon: "fas fa-link-slash",
+          title: "Systems are disconnected",
+          description:
+            "Your team works across several tools, but the information between them is messy, delayed, or manually copied.",
         },
         {
-          icon: "fa-solid fa-compass",
-          number: 2,
-          title: "Strategy",
-          description: "A clear roadmap of what to automate first and why it matters for your bottom line.",
+          icon: "fas fa-gears",
+          title: "Too much work is still manual",
+          description:
+            "People keep doing the same steps by hand because nobody had time to clean up the process properly.",
         },
         {
-          icon: "fa-solid fa-hammer",
-          number: 3,
-          title: "Build",
-          description: "We implement, test, and refine until everything works seamlessly together.",
-        },
-        {
-          icon: "fa-solid fa-headset",
-          number: 4,
-          title: "Support",
-          description: "Ongoing partnership to optimize, expand, and keep your systems running smooth.",
+          icon: "fas fa-server",
+          title: "Cloud work needs senior support",
+          description:
+            "When the problem goes deeper into infrastructure, deployments, or platform work, teams often need experienced hands to step in and move it forward.",
         },
       ],
     }
@@ -35,20 +28,22 @@ export default {
     <section id="process" class="section process">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">Our Approach</span>
-          <h2 class="section-title">Simple Process, Real Results</h2>
+          <span class="section-label">How We Help</span>
+          <h2 class="section-title">When teams usually call us</h2>
           <p class="section-description">
-            No endless meetings or confusing jargon. We get in, understand your world, and build what you need.
+            Usually when work is getting copied around by hand, systems are no longer fitting together properly, or the technical side needs senior support.
           </p>
         </div>
-        <div class="process-grid">
-          <div v-for="step in steps" :key="step.number" class="process-step">
-            <div class="process-icon">
-              <i :class="step.icon"></i>
+        <div class="process-grid process-grid-cards process-grid-cards-3">
+          <article v-for="situation in situations" :key="situation.title" class="process-card process-card-compact">
+            <div class="process-card-topline">
+              <div class="process-card-icon process-card-icon-inline">
+                <i :class="situation.icon"></i>
+              </div>
+              <h3 class="process-card-title process-card-title-inline">{{ situation.title }}</h3>
             </div>
-            <span class="process-number">{{ step.number }}. {{ step.title }}</span>
-            <p class="process-description">{{ step.description }}</p>
-          </div>
+            <p class="process-description">{{ situation.description }}</p>
+          </article>
         </div>
       </div>
     </section>

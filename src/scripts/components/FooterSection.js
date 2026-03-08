@@ -1,4 +1,3 @@
-// Footer Section Component
 export default {
   name: "FooterSection",
   data() {
@@ -27,25 +26,23 @@ export default {
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <!-- Replaced text logo with SVG image -->
           <a href="/" class="footer-logo" aria-label="Devolution home">
             <img
               src="public/devolution-logo-logo-full-dark-bg.svg"
               alt="Devolution"
               class="footer-logo-img"
-              style="height:24px; width:auto; display:block;"
               loading="lazy"
               decoding="async"
             />
           </a>
-          
+
           <p class="footer-copy">&copy; {{ currentYear }} Devolution LLC. All rights reserved.</p>
-          
+
           <div class="footer-social">
-            <a 
-              v-for="social in socials" 
+            <a
+              v-for="social in socials"
               :key="social.name"
-              :href="social.url" 
+              :href="social.url"
               :aria-label="social.name"
               class="footer-social-link"
               target="_blank"

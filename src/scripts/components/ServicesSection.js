@@ -1,4 +1,3 @@
-// Services Section Component
 export default {
   name: "ServicesSection",
   data() {
@@ -6,21 +5,24 @@ export default {
       services: [
         {
           icon: "fa-solid fa-gears",
-          title: "Workflow Automation",
+          title: "Automation Systems",
           description:
-            "We map your entire operation and eliminate the bottlenecks. From lead capture to client onboarding—every step runs without you lifting a finger.",
-        },
-        {
-          icon: "fa-solid fa-robot",
-          title: "AI Integration",
-          description:
-            "Smart assistants that handle emails, qualify leads, and generate reports. We implement AI tools that actually make sense for your business—not just buzzwords.",
+            "We reduce repetitive work by turning fragile manual processes into systems that run more cleanly in the background.",
+          examples: "Internal workflows, reporting, recurring admin tasks, operational handoffs.",
         },
         {
           icon: "fa-solid fa-cloud",
-          title: "Infrastructure & Scale",
+          title: "Cloud & Platform Support",
           description:
-            "Cloud systems that grow with you. We build the technical foundation so your tools talk to each other and nothing breaks when business takes off.",
+            "When the problem is deeper than workflow, we help with the cloud, delivery, and platform side that keeps everything stable.",
+          examples: "Cloud systems, CI/CD, DevOps support, architecture guidance, production operations.",
+        },
+        {
+          icon: "fa-solid fa-plug-circle-bolt",
+          title: "Integrations",
+          description:
+            "We connect the tools your business already uses so data moves where it should without constant copying, checking, and chasing.",
+          examples: "CRM, finance tools, internal APIs, SaaS platforms, custom glue between systems.",
         },
       ],
     }
@@ -29,11 +31,11 @@ export default {
     <section id="services" class="section services">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">What We Do</span>
-          <h2 class="section-title">Automation That Actually Works</h2>
+          <span class="section-label">Services</span>
+          <h2 class="section-title">What we usually help with</h2>
           <p class="section-description">
-            We've seen too many businesses drown in tools that don't talk to each other. 
-            Our job is to connect everything and make it run like clockwork.
+            Most projects sit somewhere between operations and engineering.
+            That's usually where things start getting messy.
           </p>
         </div>
         <div class="services-grid">
@@ -43,6 +45,7 @@ export default {
             </div>
             <h3 class="service-title">{{ service.title }}</h3>
             <p class="service-description">{{ service.description }}</p>
+            <p class="service-examples">{{ service.examples }}</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-// Trusted By Section Component
 export default {
   name: "TrustedBySection",
   data() {
@@ -47,22 +46,21 @@ export default {
     <section id="clients" class="section trusted-by">
       <div class="container">
         <div class="section-header">
-          <div class="section-label">Our Clients</div>
-          <h2 class="section-title">Trusted by Ambitious Teams</h2>
+          <div class="section-label">Selected Clients</div>
+          <h2 class="section-title">Teams we've worked with</h2>
           <p class="section-description">
-            We serve companies across diverse industries—from real estate to tech, finance to manufacturing. Here's who we've helped scale.
+            Work across real estate, finance, construction, technology, and other operationally heavy environments.
           </p>
         </div>
-        
+
         <div class="companies-grid">
-          <a 
+          <a
             v-for="company in companies"
             :key="company.name"
             :href="company.url"
             target="_blank"
             rel="noopener noreferrer"
             class="company-card"
-            :title="company.name + ' - ' + company.industry"
           >
             <div class="company-icon">
               <i :class="company.icon"></i>
@@ -72,13 +70,16 @@ export default {
               <div class="company-industry">{{ company.industry }}</div>
             </div>
             <div class="company-arrow">
-              <i class="fas fa-arrow-right"></i>
+              <i class="fas fa-arrow-up-right-from-square"></i>
             </div>
           </a>
         </div>
 
-        <div class="clients-footer">
-          <p>...and many more teams trusting us with their automation</p>
+        <div class="clients-footer section-header">
+          <p>
+            Some projects focus on operational automation. Others lean more into integrations,
+            cloud infrastructure, or platform work. Most sit somewhere in between.
+          </p>
         </div>
       </div>
     </section>
