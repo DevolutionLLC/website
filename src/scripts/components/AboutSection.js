@@ -9,15 +9,15 @@ export default {
           title: "Founder & Platform Engineer",
           bio: "Works across automation, cloud systems, and delivery.",
           email: "alis@devolution.llc",
-          linkedin: "https://linkedin.com",
+          linkedin: "https://www.linkedin.com/in/alis-adrovic/",
           photo: "public/team/alis.jpg",
         },
         {
-          name: "Senad Mustafi",
+          name: "Senad Mustafii",
           title: "Senior Automation Specialist",
           bio: "Builds practical automation and cleaner internal workflows.",
           email: "senad@devolution.llc",
-          linkedin: "https://linkedin.com",
+          linkedin: "https://www.linkedin.com/in/senadmustafii/",
           photo: "public/team/senad.jpg",
         },
         {
@@ -25,7 +25,7 @@ export default {
           title: "Operations & Client Success",
           bio: "Keeps outreach, communication, and client follow-through moving.",
           email: "waez@devolution.llc",
-          linkedin: "https://linkedin.com",
+          linkedin: "",
           photo: "public/team/waez.jpg",
         },
       ],
@@ -77,7 +77,7 @@ export default {
                 <a :href="'mailto:' + member.email" class="team-link-compact" title="Email">
                   <i class="fas fa-envelope"></i>
                 </a>
-                <a :href="member.linkedin" target="_blank" rel="noopener" class="team-link-compact" title="LinkedIn">
+                <a v-if="member.linkedin" :href="member.linkedin" target="_blank" rel="noopener" class="team-link-compact" title="LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
               </div>

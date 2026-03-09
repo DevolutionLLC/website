@@ -328,13 +328,13 @@ a {
 }
 
 .team-photo-wrap {
-  width: 92px;
-  height: 92px;
+  width: 104px;
+  height: 104px;
   border-radius: 999px;
   overflow: hidden;
   margin-bottom: 1rem;
-  background: #f4eee3;
-  box-shadow: inset 0 0 0 1px rgba(24, 33, 43, 0.04);
+  background: transparent;
+  border: 3px solid var(--border);
 }
 
 .team-photo {
@@ -475,7 +475,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 0;
 }
 
 .case-study-image {
@@ -489,9 +488,7 @@ a {
 }
 
 .about {
-  background: var(--bg-soft);
-  border-top: 1px solid rgba(24, 33, 43, 0.04);
-  border-bottom: 1px solid rgba(24, 33, 43, 0.04);
+  background: var(--bg-white);
 }
 
 .about-simple {
@@ -625,7 +622,7 @@ a {
 }
 
 .trusted-by {
-  background: var(--bg-white);
+  background: var(--bg-soft-2);
   border-top: 1px solid rgba(24, 33, 43, 0.04);
   border-bottom: 1px solid rgba(24, 33, 43, 0.04);
 }
@@ -662,7 +659,7 @@ a {
 }
 
 .cta {
-  background: var(--bg-soft);
+  background: var(--bg-white);
   border-top: 1px solid rgba(24, 33, 43, 0.05);
 }
 
@@ -911,6 +908,11 @@ a {
   .team-photo-wrap {
     width: 104px;
     height: 104px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: 3px solid var(--border);
   }
 }
 
