@@ -488,7 +488,7 @@ a {
 }
 
 .about {
-  background: var(--bg-white);
+  background: var(--bg-soft);
 }
 
 .about-simple {
@@ -622,7 +622,7 @@ a {
 }
 
 .trusted-by {
-  background: var(--bg-soft-2);
+  background: var(--bg-white);
   border-top: 1px solid rgba(24, 33, 43, 0.04);
   border-bottom: 1px solid rgba(24, 33, 43, 0.04);
 }
@@ -659,7 +659,7 @@ a {
 }
 
 .cta {
-  background: var(--bg-white);
+  background: var(--bg-soft);
   border-top: 1px solid rgba(24, 33, 43, 0.05);
 }
 
