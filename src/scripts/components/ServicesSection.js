@@ -5,24 +5,24 @@ export default {
       services: [
         {
           icon: "fa-solid fa-gears",
-          title: "Automation Systems",
+          title: "Workflow Automation",
           description:
-            "We reduce repetitive work by turning fragile manual processes into systems that run more cleanly in the background.",
-          examples: "Internal workflows, reporting, recurring admin tasks, operational handoffs.",
+            "We reduce repetitive work by cleaning up workflows that are still being handled step by step by hand.",
+          examples: "Internal workflows, reporting, recurring admin tasks, operational handoffs",
         },
         {
           icon: "fa-solid fa-cloud",
           title: "Cloud & Platform Support",
           description:
             "When the problem is deeper than workflow, we help with the cloud, delivery, and platform side that keeps everything stable.",
-          examples: "Cloud systems, CI/CD, DevOps support, architecture guidance, production operations.",
+          examples: "Cloud systems, CI/CD, DevOps support, architecture guidance, production operations",
         },
         {
           icon: "fa-solid fa-plug-circle-bolt",
           title: "Integrations",
           description:
             "We connect the tools your business already uses so data moves where it should without constant copying, checking, and chasing.",
-          examples: "CRM, finance tools, internal APIs, SaaS platforms, custom glue between systems.",
+          examples: "CRM, finance tools, internal APIs, SaaS platforms, custom glue between systems",
         },
       ],
     }
@@ -35,7 +35,7 @@ export default {
           <h2 class="section-title">What we usually help with</h2>
           <p class="section-description">
             Most projects sit somewhere between operations and engineering.
-            That's usually where things start getting messy.
+            That's usually where things start getting messy
           </p>
         </div>
         <div class="services-grid">

@@ -49,7 +49,7 @@ export default {
           <div class="section-label">Selected Clients</div>
           <h2 class="section-title">Teams we've worked with</h2>
           <p class="section-description">
-            Work across real estate, finance, construction, technology, and other operationally heavy environments.
+            Work across real estate, finance, construction, technology, and other operationally heavy environments
           </p>
         </div>
 

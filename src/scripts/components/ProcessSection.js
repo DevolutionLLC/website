@@ -31,7 +31,7 @@ export default {
           <span class="section-label">How We Help</span>
           <h2 class="section-title">When teams usually call us</h2>
           <p class="section-description">
-            Usually when work is getting copied around by hand, systems are no longer fitting together properly, or the technical side needs senior support.
+            Usually when work is getting copied around by hand, systems are no longer fitting together properly, or the technical side needs senior support
           </p>
         </div>
         <div class="process-grid process-grid-cards process-grid-cards-3">

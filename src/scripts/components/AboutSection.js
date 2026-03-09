@@ -7,7 +7,7 @@ export default {
         {
           name: "Alis Adrović",
           title: "Founder & Platform Engineer",
-          bio: "Works across automation, cloud systems, and delivery.",
+          bio: "Works across automation, cloud systems, and delivery",
           email: "alis@devolution.llc",
           linkedin: "https://www.linkedin.com/in/alis-adrovic/",
           photo: "public/team/alis.jpg",
@@ -15,7 +15,7 @@ export default {
         {
           name: "Senad Mustafii",
           title: "Senior Automation Specialist",
-          bio: "Builds practical automation and cleaner internal workflows.",
+          bio: "Builds practical automation and cleaner internal workflows",
           email: "senad@devolution.llc",
           linkedin: "https://www.linkedin.com/in/senadmustafii/",
           photo: "public/team/senad.jpg",
@@ -23,7 +23,7 @@ export default {
         {
           name: "Waez Denyel Hadji",
           title: "Operations & Client Success",
-          bio: "Keeps outreach, communication, and client follow-through moving.",
+          bio: "Keeps outreach, communication, and client follow-through moving",
           email: "waez@devolution.llc",
           linkedin: "",
           photo: "public/team/waez.jpg",
@@ -47,7 +47,7 @@ export default {
           <h2 class="section-title">Why we built Devolution</h2>
           <p class="section-description about-intro-copy">
             We built Devolution for teams that need real technical help when systems get messy,
-            work stays too manual, or cloud delivery starts needing experienced hands.
+            work stays too manual, or cloud delivery starts needing experienced hands
           </p>
           <div class="about-manifesto" aria-label="How we work">
             <span>Small team</span>

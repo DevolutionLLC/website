@@ -56,8 +56,7 @@ export default {
             <span class="section-label">Contact</span>
             <h2 class="cta-title">Start with a practical conversation</h2>
             <p class="cta-description">
-              Tell us where things feel messy.
-              That can be automation, integrations, cloud work, or a mix of all three.
+              Most engagements start with a short technical conversation to understand the systems involved and the work needed
             </p>
           </div>
 
@@ -112,7 +111,7 @@ export default {
               <textarea
                 id="message"
                 class="form-textarea"
-                placeholder="What are you trying to improve? A messy workflow, tools that don't connect properly, cloud/platform work, or something else."
+                placeholder="What are you trying to improve? A workflow that is still manual, tools that do not connect properly, cloud/platform work, or something else."
                 v-model="form.message"
               ></textarea>
             </div>

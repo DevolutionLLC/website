@@ -6,7 +6,7 @@ export default {
         <div class="case-study-content">
           <span class="section-label">Case study</span>
           <h2 id="case-study-title" class="section-title case-study-title">Robodraft</h2>
-          <p class="case-study-subtitle">Automation and workflow hub for accounting teams.</p>
+          <p class="case-study-subtitle">Automation and workflow hub for accounting teams</p>
 
           <p class="case-study-text">
             Robodraft started as an invoice processing automation built for real accounting workflows.
