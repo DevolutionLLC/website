@@ -2,6 +2,7 @@ export default {
   name: "AboutSection",
   data() {
     return {
+      fallbackPhoto: "public/team/avatar-fallback.svg",
       team: [
         {
           name: "Alis Adrović",
@@ -9,7 +10,7 @@ export default {
           bio: "Works across automation, cloud systems, and delivery.",
           email: "alis@devolution.llc",
           linkedin: "https://linkedin.com",
-          icon: "fas fa-user",
+          photo: "public/team/alis.jpg",
         },
         {
           name: "Senad Mustafi",
@@ -17,18 +18,26 @@ export default {
           bio: "Builds practical automation and cleaner internal workflows.",
           email: "senad@devolution.llc",
           linkedin: "https://linkedin.com",
-          icon: "fas fa-user",
+          photo: "public/team/senad.jpg",
         },
         {
-          name: "Waez Hadji",
+          name: "Waez Denyel Hadji",
           title: "Operations & Client Success",
-          bio: "Keeps projects clear, useful, and moving in the right direction.",
+          bio: "Keeps outreach, communication, and client follow-through moving.",
           email: "waez@devolution.llc",
           linkedin: "https://linkedin.com",
-          icon: "fas fa-user",
+          photo: "public/team/waez.jpg",
         },
       ],
     }
+  },
+  methods: {
+    handleImageError(event) {
+      if (event?.target && !event.target.dataset.fallbackApplied) {
+        event.target.dataset.fallbackApplied = "true"
+        event.target.src = this.fallbackPhoto
+      }
+    },
   },
   template: `
     <section id="about" class="section about">
@@ -37,8 +46,8 @@ export default {
           <span class="section-label">About</span>
           <h2 class="section-title">Why we built Devolution</h2>
           <p class="section-description about-intro-copy">
-            We built Devolution for teams that need real technical help when systems get messy, work
-            stays too manual, or cloud delivery starts needing experienced hands.
+            We built Devolution for teams that need real technical help when systems get messy,
+            work stays too manual, or cloud delivery starts needing experienced hands.
           </p>
           <div class="about-manifesto" aria-label="How we work">
             <span>Small team</span>
@@ -50,8 +59,14 @@ export default {
         <div class="about-team-section about-team-section-simple">
           <div class="team-grid-compact team-grid-compact-simple">
             <div v-for="member in team" :key="member.name" class="team-card-compact">
-              <div class="team-icon-compact">
-                <i :class="member.icon"></i>
+              <div class="team-photo-wrap">
+                <img
+                  :src="member.photo"
+                  :alt="member.name"
+                  class="team-photo"
+                  loading="lazy"
+                  @error="handleImageError"
+                />
               </div>
               <div class="team-content-compact">
                 <div class="team-name-compact">{{ member.name }}</div>
