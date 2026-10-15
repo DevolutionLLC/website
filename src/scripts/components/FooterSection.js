@@ -38,6 +38,11 @@ export default {
 
           <p class="footer-copy">&copy; {{ currentYear }} Devolution LLC. All rights reserved.</p>
 
+          <div class="footer-legal-links">
+            <a href="/privacy/" class="footer-legal-link">Privacy Policy</a>
+            <a href="/terms/" class="footer-legal-link">Terms &amp; Conditions</a>
+          </div>
+
           <div class="footer-social">
             <a
               v-for="social in socials"

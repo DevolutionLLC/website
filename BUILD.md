@@ -53,6 +53,10 @@ No manual steps needed — just commit and push to deploy!
 ```
 src/
   ├── index.html         (references main.css)
+  ├── privacy/
+  │   └── index.html     (privacy policy page)
+  ├── terms/
+  │   └── index.html     (terms & conditions page)
   ├── styles/
   │   └── main.css       (source CSS, unminified)
   ├── scripts/

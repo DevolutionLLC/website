@@ -48,16 +48,30 @@ console.log('📦 Minifying JavaScript with Terser...');
 const jsDir = path.join(DIST_DIR, 'scripts');
 await minifyJSDirectory(jsDir);
 
-// Update HTML to use minified CSS in dist
+// Update HTML files to use minified assets in dist
 console.log('📝 Updating HTML to reference minified assets...');
-const htmlPath = path.join(DIST_DIR, 'index.html');
-if (fs.existsSync(htmlPath)) {
-  let html = fs.readFileSync(htmlPath, 'utf-8');
-  html = html.replace(/href="styles\/main\.css"/g, 'href="styles/main.min.css"');
-  // Update main.js to main.min.js
-  html = html.replace(/src="scripts\/main\.js"/g, 'src="scripts/main.min.js"');
-  fs.writeFileSync(htmlPath, html);
-  console.log('✅ HTML updated');
+for (const htmlFile of listHTMLFiles(DIST_DIR)) {
+  let html = fs.readFileSync(htmlFile, 'utf-8');
+  html = html.replace(/href="(\/?)styles\/main\.css"/g, 'href="$1styles/main.min.css"');
+  html = html.replace(/src="(\/?)scripts\/main\.js"/g, 'src="$1scripts/main.min.js"');
+  fs.writeFileSync(htmlFile, html);
+  console.log(`✅ ${path.relative(DIST_DIR, htmlFile)} updated`);
+}
+
+/**
+ * Find all HTML files in a directory recursively
+ */
+function listHTMLFiles(dir) {
+  const files = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...listHTMLFiles(fullPath));
+    } else if (entry.name.endsWith('.html')) {
+      files.push(fullPath);
+    }
+  }
+  return files;
 }
 
 // Create .nojekyll file for GitHub Pages to serve minified files
